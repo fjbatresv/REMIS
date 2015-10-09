@@ -1,0 +1,15 @@
+nuevo_inventario:
+    path: /admin/inventario/nuevo
+    defaults: { _controller: InvisionInventarioBundle:Inventario:nuevo }
+editar_inventario:
+    path: /admin/inventario/editar
+    defaults: { _controller: InvisionInventarioBundle:Inventario:editar }
+eliminar_inventario:
+    path: /admin/inventario/eliminar/
+    defaults: { _controller: InvisionInventarioBundle:Inventario:eliminar}
+busqueda_inventario:
+    path: /inventario/busqueda/
+    defaults: { _controller: InvisionInventarioBundle:Inventario:busqueda }
+info_inventario:
+    path: /inventario/info/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:Inventario:info }

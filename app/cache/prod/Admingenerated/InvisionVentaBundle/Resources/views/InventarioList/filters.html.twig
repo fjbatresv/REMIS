@@ -1,0 +1,15 @@
+{% block list_filters %}
+<div class="filters-list">
+    <form action="{{ path("Invision_VentaBundle_Inventario_filters") }}" method="post" {{ form_enctype(form) }} role="form">
+        <legend>{% trans from "Admingenerator" %}list.filters{% endtrans %}</legend>
+        <fieldset class="form-group form_block form_fieldset_NONE">
+            {{ form_errors(form) }}
+                        {{ form_rest(form) }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> {% trans from "Admingenerator" %}list.button.filter{% endtrans %}</button>
+            <button type="submit" class="btn btn-sm btn-default" name="reset" value="true"><i class="fa fa-refresh"></i> {% trans from "Admingenerator" %}list.button.reset{% endtrans %}</button>
+        </div>
+    </form>
+</div>
+{% endblock list_filters %}

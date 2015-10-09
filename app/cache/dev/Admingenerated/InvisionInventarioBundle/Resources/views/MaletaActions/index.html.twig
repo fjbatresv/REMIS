@@ -1,0 +1,37 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+    {% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {{ title }}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{{ title }}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="row">
+            <div class="col-md-12">
+        {% block form %}
+            <form action="{{ path(actionRoute, actionParams) }}" method="post" class="admin_form">
+                <input type="hidden" name="_csrf_token" value="{{ path(actionRoute, actionParams)|csrf_token }}"/>
+                {% block form_buttons %}
+                    <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-ok"></i> {% trans from "Admingenerator" %}action.custom.confirm{% endtrans %}
+    </button>
+    <a class="btn btn-default" href="{{ path("Invision_InventarioBundle_Maleta_list") }}">
+        <i class="glyphicon glyphicon-remove"></i> {% trans from "Admingenerator" %}action.custom.cancel{% endtrans %}
+    </a>
+
+                    </div>
+                {% endblock form_buttons %}
+            </form>
+        {% endblock form %}
+    </div>
+
+    </div>
+{% endblock body %}

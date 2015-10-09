@@ -1,0 +1,31 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+        {% block object_actions_script %}
+        {% endblock object_actions_script %}
+{% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {% trans from "Admin" %}New object for SoporteBundle{% endtrans %}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans from "Admin" %}New object for SoporteBundle{% endtrans %}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="container-fluid">
+	    <div class="row object-actions-TipoSede">
+	        <div class="col-md-12">    {% block object_actions %}
+        {% endblock object_actions %}
+</div>
+	    </div>
+
+	    <div class="row">{% block form_tabs %}
+{% endblock form_tabs %}
+
+	        {% include "InvisionSoporteBundle:TipoSedeNew:form.html.twig" with {  } %}
+	    </div>			
+	</div>
+{% endblock body %}

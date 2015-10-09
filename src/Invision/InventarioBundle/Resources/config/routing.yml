@@ -1,0 +1,21 @@
+#Inventario
+inventario_inventario:
+    resource: "@InvisionInventarioBundle/Resources/config/inventarioRouting.yml"
+    prefix:   /
+#Color
+inventario_color:
+    resource: "@InvisionInventarioBundle/Resources/config/colorRouting.yml"
+    prefix:   /
+#Maleta
+inventario_maleta:
+    resource: "@InvisionInventarioBundle/Resources/config/maletaRouting.yml"
+    prefix:   /
+#Materiales
+inventario_material:
+    resource: "@InvisionInventarioBundle/Resources/config/materialRouting.yml"
+    prefix:   /
+#Procesos extras
+inventario_proceso_extra:
+    resource: "@InvisionInventarioBundle/Resources/config/procesoExtraRouting.yml"
+    prefix:   /
+    

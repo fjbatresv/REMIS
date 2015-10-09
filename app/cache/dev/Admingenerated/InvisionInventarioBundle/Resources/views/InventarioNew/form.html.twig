@@ -1,0 +1,154 @@
+
+    {% block form %}
+    <form class="admin_form"
+        {% if Inventario.Id %}
+            action="{{ path("Invision_InventarioBundle_Inventario_update", { 'pk': Inventario.Id }) }}"
+        {% else %}
+            action="{{ path("Invision_InventarioBundle_Inventario_create") }}"
+        {% endif %}
+        method="post" {{ form_enctype(form) }} role="form">
+
+        {{ form_errors(form) }}
+                {% block form_fieldset_NONE %}
+    <fieldset class="container-fluid form_block form_fieldset_NONE tab-pane">
+        			
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_id">
+                    {% block form_id %}
+                        {{ form_row(form['id']) }}
+                    {% endblock form_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_codigo">
+                    {% block form_codigo %}
+                        {{ form_row(form['codigo']) }}
+                    {% endblock form_codigo %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_color_id">
+                    {% block form_color_id %}
+                        {{ form_row(form['color_id']) }}
+                    {% endblock form_color_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_cantidad">
+                    {% block form_cantidad %}
+                        {{ form_row(form['cantidad']) }}
+                    {% endblock form_cantidad %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_number field_costo">
+                    {% block form_costo %}
+                        {{ form_row(form['costo']) }}
+                    {% endblock form_costo %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_number field_venta">
+                    {% block form_venta %}
+                        {{ form_row(form['venta']) }}
+                    {% endblock form_venta %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_textarea field_descripcion">
+                    {% block form_descripcion %}
+                        {{ form_row(form['descripcion']) }}
+                    {% endblock form_descripcion %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_textarea field_imagen">
+                    {% block form_imagen %}
+                        {{ form_row(form['imagen']) }}
+                    {% endblock form_imagen %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_sede_id">
+                    {% block form_sede_id %}
+                        {{ form_row(form['sede_id']) }}
+                    {% endblock form_sede_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_created_by">
+                    {% block form_created_by %}
+                        {{ form_row(form['created_by']) }}
+                    {% endblock form_created_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_updated_by">
+                    {% block form_updated_by %}
+                        {{ form_row(form['updated_by']) }}
+                    {% endblock form_updated_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_created_at">
+                    {% block form_created_at %}
+                        {{ form_row(form['created_at']) }}
+                    {% endblock form_created_at %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_updated_at">
+                    {% block form_updated_at %}
+                        {{ form_row(form['updated_at']) }}
+                    {% endblock form_updated_at %}
+                </div>
+                                        </div>
+            </fieldset>
+{% endblock form_fieldset_NONE %}
+
+        
+        {{ form_rest(form) }}
+
+        {% block form_buttons %}
+        <div id="edit-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_save %}
+            
+                
+                            
+            <button type="submit" name="save" class="btn btn-success"><i class="fa fa-check"></i> {% trans from "Admingenerator" %}action.generic.save{% endtrans %}
+        </button>
+    
+
+                
+                        {% endblock generic_action_save %}
+                    {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_InventarioBundle_Inventario_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+        {% endblock form_buttons %}
+    </form>
+    {% endblock form %}

@@ -1,0 +1,6 @@
+{% extends_admingenerated "InvisionSoporteBundle:SedeList:row.html.twig" %}
+ {% block object_action_delete %}
+    {% spaceless %}
+<a  class="btn btn-default btn-xs " href="javascript:;" onClick="vel_admin.eliminar('la sede ', '{{Sede.nombre}}', '{{path('eliminar_sede')}}', '?pk={{Sede.id}}')"><i class="fa fa-eraser"></i></a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

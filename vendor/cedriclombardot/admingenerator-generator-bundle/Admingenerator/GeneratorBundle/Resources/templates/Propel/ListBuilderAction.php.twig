@@ -1,0 +1,108 @@
+{% extends '../CommonAdmin/ListAction/ListBuilderAction.php.twig' %}
+{% block pager_adapter -%}
+use Pagerfanta\Adapter\PropelAdapter as PagerAdapter;
+{% endblock %}
+{% block getQuery -%}
+    protected function getQuery()
+    {
+        $query = $this->buildQuery();
+
+        $this->processQuery($query);
+        $this->processSort($query);
+        $this->processFilters($query);
+        $this->processScopes($query);
+
+        return $query;
+    }
+
+    protected function buildQuery()
+    {
+        return \{{ model }}Query::create();
+    }
+{% endblock %}
+
+{% block processSort -%}
+    protected function processSort($query)
+    {
+        if ($this->getSortColumn()) {
+            if (!strstr($this->getSortColumn(), '.')) { //direct column
+                $query->orderBy($this->getSortColumn(), $this->getSortOrder());
+            } else {
+                list($table, $column) = explode('.', $this->getSortColumn(), 2);
+                $this->addJoinFor($table, $query);
+                $query->orderBy($this->getSortColumn(), $this->getSortOrder());
+            }
+        }
+    }
+{% endblock %}
+
+{% block getFilterForm -%}
+    protected function getFilterForm()
+    {
+        $filters = $this->getFilters();
+        {# Don't we should handle "relations" for Propel too? #}
+        return $this->createForm($this->getFiltersType(), $this->getFilters());
+    }
+{% endblock %}
+
+{% block addJoinFor -%}
+    protected function addJoinFor($table, $query)
+    {
+        $query->leftJoin($table);
+    }
+{% endblock %}
+
+{% block processFilters -%}
+    protected function processFilters($query)
+    {
+        $filterObject = $this->getFilters();
+
+        $queryFilter = $this->getQueryFilter();
+        $queryFilter->setQuery($query);
+
+        {% for filter in builder.filterColumns %}
+
+        if (isset($filterObject['{{ filter.name }}']) && null !== $filterObject['{{ filter.name }}']) {
+            $queryFilter->add{{ filter.dbType|lower|classify }}Filter('{{ filter.filterOn }}', $filterObject['{{ filter.name }}']);
+        }
+        {% endfor %}
+
+    }
+{% endblock %}
+
+{% block processScopes -%}
+    protected function processScopes($query)
+    {
+    {% if scopes is defined %}
+        $scopes = $this->getScopes();
+
+        {% for groupName, group in scopes -%}
+            {%- for scopeName, params in group %}
+
+        if (isset($scopes['{{ groupName }}']) && $scopes['{{ groupName }}'] == '{{ scopeName }}') {
+            {% if params["filters"] is defined -%}
+                {%- for filter, filterParams in params["filters"] -%}
+                {%- if filter|is_numeric -%}
+                $query->{{ filterParams }}();
+                {%- else -%}
+                $query->{{ filter }}({{ filterParams|as_php }});
+                {%- endif -%}
+                {%- endfor -%}
+            {%- endif %}
+
+        }
+            {% endfor -%}
+        {%- endfor %}
+    {% endif %}
+    }
+{% endblock %}
+
+{% block getQueryFilter %}
+    /**
+     * @return \Admingenerator\GeneratorBundle\QueryFilter\QueryFilterInterface
+     */
+    protected function getQueryFilter()
+    {
+        return $this->get('admingenerator.queryfilter.propel');
+    }
+{% endblock %}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>app/Resources/views/base.html.twig</url>
+            <bookmark id="1">
+                <name/>
+                <line>91</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Resources/views/ProcesoExtraList/row.html.twig</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Controller/MaterialController.php</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Controller/ProcesoExtraController.php</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Resources/views/ProcesoExtra/procesoExtra.html.twig</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Form/Type/ProcesoExtra/procesoExtraType.php</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Resources/config/ProcesoExtra-generator.yml</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Resources/views/MaletaList/row.html.twig</file>
+            <file>file:/home/fjbatresv/NetBeansProjects/invVision/src/Invision/InventarioBundle/Resources/config/procesoExtraRouting.yml</file>
+        </group>
+    </open-files>
+</project-private>

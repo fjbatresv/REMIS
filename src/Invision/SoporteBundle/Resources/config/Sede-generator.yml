@@ -1,0 +1,66 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\SoporteBundle\Model\Sede
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: SoporteBundle
+    pk_requirement: ~
+    fields:
+        tipo:
+            label: Tipo
+            getter: tipoSede.nombre
+    object_actions:
+        delete:
+            icon: fa fa-eraser
+            route: eliminar_sede
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Sedes
+            display: [nombre, tipo]
+            actions:
+                nuevo:
+                    icon: fa fa-plus
+                    class: btn btn-primary
+                    route: nueva_sede
+            object_actions:
+                edit:
+                    icon: fa fa-pencil
+                    route: editar_sede
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for SoporteBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Sede.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Sede.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

@@ -1,0 +1,53 @@
+
+{% block list_row %}
+<tr class="list_trow">{% block list_row_content %}
+                      <td class="td_VARCHAR td_nombre">
+              {% block list_td_column_nombre %}{{ Perfil.nombre }}{% endblock list_td_column_nombre %}
+          </td>
+                      <td class="td_VARCHAR td_descripcion">
+              {% block list_td_column_descripcion %}{{ Perfil.descripcion }}{% endblock list_td_column_descripcion %}
+          </td>
+        {% endblock list_row_content %}
+    {% block object_actions %}
+                                <td class="object_actions">
+                            <div class="btn-group">
+                                    {% block object_action_edit %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("editar_perfil", { pk: Perfil.Id }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}"
+                rel="tooltip"
+        ><i class="fa fa fa-pencil"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_edit %}
+                                    {% block object_action_menu %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("menu_perfil", { 'pk': Perfil.Id, action: 'menu' }) }}"
+        data-original-title="{% trans from "Admin" %}Menu{% endtrans %}"
+                rel="tooltip"
+        ><i class="fa fa fa-bars"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_menu %}
+                                    {% block object_action_delete %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("Invision_SoporteBundle_Perfil_object", { pk: Perfil.Id, action: 'delete' }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.delete.label{% endtrans %}"
+                rel="tooltip"
+         data-confirm="{% trans from "Admingenerator" %}action.object.delete.confirm{% endtrans %}"  data-csrf-token="{{ path("Invision_SoporteBundle_Perfil_object", { pk: Perfil.Id, action: 'delete' })|csrf_token }}" ><i class="fa fa fa-eraser"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_delete %}
+                                {% block object_actions_customActions %}{% endblock object_actions_customActions %}
+                </div>
+                        </td>
+                    {% endblock object_actions %}
+
+</tr>
+{% endblock list_row %}

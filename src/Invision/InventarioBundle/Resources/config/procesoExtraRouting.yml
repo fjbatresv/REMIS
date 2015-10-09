@@ -1,0 +1,9 @@
+nuevo_proceso_extra:
+    path: /admin/proceso/extra/nuevo/
+    defaults: { _controller: InvisionInventarioBundle:ProcesoExtra:nuevo }
+editar_proceso_extra:
+    path: /admin/proceso/extra/editar/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:ProcesoExtra:editar }
+eliminar_proceso_extra:
+    path: /admin/proceso/extra/eliminar/
+    defaults: { _controller: InvisionInventarioBundle:ProcesoExtra:eliminar }

@@ -1,0 +1,25 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+    {% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {% trans from "Admin" %}Maletas de los usuarios{% endtrans %}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans from "Admin" %}Maletas de los usuarios{% endtrans %}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="row">
+        <div class=" col-md-12 ">{% block list_scopes %}
+{% endblock list_scopes %}
+{% include "InvisionInventarioBundle:MaletaList:results.html.twig" with {  } %}
+        </div>
+
+        {% block filters %}
+                    {% endblock filters %}
+    </div>
+{% endblock body %}

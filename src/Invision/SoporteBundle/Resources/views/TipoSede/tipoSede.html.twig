@@ -1,0 +1,47 @@
+{%extends '::base.html.twig'%}
+{% block title %}{%if pk%}Editar{%else%}Nuevo{%endif%} tipo de sede{% endblock %}
+{%block body%}
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">{%if pk%}Editar{%else%}Nuevo{%endif%} tipo de sede</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form method="POST" action="{{path(ruta, {'pk' : pk})}}" novalidate="">
+                <div class="box-body">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.nombre)}}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_widget(form.nombre)}}
+                            <span class="has-error">
+                                {{form_errors(form.nombre)}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.descripcion)}}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_widget(form.descripcion)}}
+                            <span class="has-error">
+                                {{form_errors(form.descripcion)}}
+                            </span>
+                        </div>
+                    </div>
+                    {{form_rest(form)}}
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                    <a  href="{{path('Invision_SoporteBundle_TipoSede_list')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{%endblock%}

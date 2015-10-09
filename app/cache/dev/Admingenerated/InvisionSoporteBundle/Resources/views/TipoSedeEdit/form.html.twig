@@ -1,0 +1,84 @@
+
+    {% block form %}
+    <form class="admin_form"
+        {% if TipoSede.Id %}
+            action="{{ path("Invision_SoporteBundle_TipoSede_update", { 'pk': TipoSede.Id }) }}"
+        {% else %}
+            action="{{ path("Invision_SoporteBundle_TipoSede_create") }}"
+        {% endif %}
+        method="post" {{ form_enctype(form) }} role="form">
+
+        {{ form_errors(form) }}
+                {% block form_fieldset_NONE %}
+    <fieldset class="container-fluid form_block form_fieldset_NONE tab-pane">
+        			
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_id">
+                    {% block form_id %}
+                        {{ form_row(form['id']) }}
+                    {% endblock form_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_nombre">
+                    {% block form_nombre %}
+                        {{ form_row(form['nombre']) }}
+                    {% endblock form_nombre %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_textarea field_descripcion">
+                    {% block form_descripcion %}
+                        {{ form_row(form['descripcion']) }}
+                    {% endblock form_descripcion %}
+                </div>
+                                        </div>
+            </fieldset>
+{% endblock form_fieldset_NONE %}
+
+        
+        {{ form_rest(form) }}
+
+        {% block form_buttons %}
+        <div id="edit-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_save %}
+            
+                
+                            
+            <button type="submit" name="save" class="btn btn-success"><i class="fa fa-check"></i> {% trans from "Admingenerator" %}action.generic.save{% endtrans %}
+        </button>
+    
+
+                
+                        {% endblock generic_action_save %}
+                    {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_SoporteBundle_TipoSede_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+        {% endblock form_buttons %}
+    </form>
+    {% endblock form %}

@@ -1,0 +1,21 @@
+nueva_maleta:
+    path: /admin/maleta/nueva/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:nueva }
+editar_maleta:
+    path: /admin/maleta/editar/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:editar }
+eliminar_maleta:
+    path: /admin/maleta/eliminar/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:eliminar }
+cargar_maleta:
+    path: /admin/maleta/cargar/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:cargar }
+colores_codigo_ajax:
+    path: /admin/color/codigo/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:coloresCodigo }
+descargar_maleta:
+    path: /admin/maleta/descargar/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:descargar }
+editar_carga_maleta_ajax:
+    path: /admin/maleta/editar/carga/ajax/
+    defaults: { _controller: InvisionInventarioBundle:Maleta:editarCarga }

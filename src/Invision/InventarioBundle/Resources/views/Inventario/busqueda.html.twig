@@ -1,0 +1,66 @@
+{%extends '::base.html.twig'%}
+{%block body%}
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Buscar articulos</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form method="POST" action="{{path(ruta)}}" novalidate="">
+                <div class="box-body">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.codigo)}}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_widget(form.codigo)}}
+                            <span class="has-error">
+                                {{form_errors(form.codigo)}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.venta)}}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_widget(form.venta)}}
+                            <span class="has-error">
+                                {{form_errors(form.venta)}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.color)}}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_widget(form.color)}}
+                            <span class="has-error">
+                                {{form_errors(form.color)}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            {{form_label(form.descripcion)}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form_widget(form.descripcion)}}
+                            <span class="has-error">
+                                {{form_errors(form.descripcion)}}
+                            </span>
+                        </div>
+                    </div>
+                    {{form_rest(form)}}
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{%endblock%}

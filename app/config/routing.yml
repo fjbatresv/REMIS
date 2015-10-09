@@ -1,0 +1,56 @@
+InvisionInventarioBundle_admin_invision_inventario_bundle_Material:
+    resource: "@InvisionInventarioBundle/Controller/Material/"
+    type:     admingenerator
+    prefix:   /admin/material/
+InvisionInventarioBundle_admin_invision_inventario_bundle_Maleta:
+    resource: "@InvisionInventarioBundle/Controller/Maleta/"
+    type:     admingenerator
+    prefix:   /admin/maleta/
+
+InvisionSoporteBundle_admin_invision_soporte_bundle_Sede:
+    resource: "@InvisionSoporteBundle/Controller/Sede/"
+    type:     admingenerator
+    prefix:   /admin/sede/
+
+InvisionSoporteBundle_admin_invision_soporte_bundle_TipoSede:
+    resource: "@InvisionSoporteBundle/Controller/TipoSede/"
+    type:     admingenerator
+    prefix:   /admin/tipo/sede/
+
+InvisionInventarioBundle_admin_invision_inventario_bundle_Inventario:
+    resource: "@InvisionInventarioBundle/Controller/Inventario/"
+    type:     admingenerator
+    prefix:   /admin/inventario/
+
+InvisionInventarioBundle_admin_invision_inventario_bundle_ProcesoExtra:
+    resource: "@InvisionInventarioBundle/Controller/ProcesoExtra/"
+    type:     admingenerator
+    prefix:   /admin/procesos/extra/
+
+InvisionInventarioBundle_admin_invision_inventario_bundle_Material:
+    resource: "@InvisionInventarioBundle/Controller/Material/"
+    type:     admingenerator
+    prefix:   /admin/materiales/
+
+InvisionInventarioBundle_admin_invision_inventario_bundle_Color:
+    resource: "@InvisionInventarioBundle/Controller/Color/"
+    type:     admingenerator
+    prefix:   /admin/colores/
+
+invision_inventario:
+    resource: "@InvisionInventarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+InvisionSoporteBundle_admin_invision_soporte_bundle_Perfil:
+    resource: "@InvisionSoporteBundle/Controller/Perfil/"
+    type:     admingenerator
+    prefix:   /admin/perfil
+
+InvisionSoporteBundle_admin_invision_soporte_bundle_Usuario:
+    resource: "@InvisionSoporteBundle/Controller/Usuario/"
+    type:     admingenerator
+    prefix:   /admin/usuario/
+
+invision_soporte:
+    resource: "@InvisionSoporteBundle/Resources/config/routing.yml"
+    prefix:   /

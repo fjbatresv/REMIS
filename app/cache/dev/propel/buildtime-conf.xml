@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <propel>
+    <datasources default="default">
+      <datasource id="default">
+        <adapter>mysql</adapter>
+        <connection>
+          <dsn>mysql:host=localhost;dbname=invision;charset=UTF8</dsn>
+          <user>syuser</user>
+          <password>sypass</password>
+        </connection>
+      </datasource>
+    </datasources>
+  </propel>
+</config>

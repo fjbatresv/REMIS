@@ -1,0 +1,105 @@
+
+    {% block form %}
+    <form class="admin_form"
+        {% if Color.Id %}
+            action="{{ path("Invision_VentaBundle_Color_update", { 'pk': Color.Id }) }}"
+        {% else %}
+            action="{{ path("Invision_VentaBundle_Color_create") }}"
+        {% endif %}
+        method="post" {{ form_enctype(form) }} role="form">
+
+        {{ form_errors(form) }}
+                {% block form_fieldset_NONE %}
+    <fieldset class="container-fluid form_block form_fieldset_NONE tab-pane">
+        			
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_id">
+                    {% block form_id %}
+                        {{ form_row(form['id']) }}
+                    {% endblock form_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_nombre">
+                    {% block form_nombre %}
+                        {{ form_row(form['nombre']) }}
+                    {% endblock form_nombre %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_created_by">
+                    {% block form_created_by %}
+                        {{ form_row(form['created_by']) }}
+                    {% endblock form_created_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_updated_by">
+                    {% block form_updated_by %}
+                        {{ form_row(form['updated_by']) }}
+                    {% endblock form_updated_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_created_at">
+                    {% block form_created_at %}
+                        {{ form_row(form['created_at']) }}
+                    {% endblock form_created_at %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_updated_at">
+                    {% block form_updated_at %}
+                        {{ form_row(form['updated_at']) }}
+                    {% endblock form_updated_at %}
+                </div>
+                                        </div>
+            </fieldset>
+{% endblock form_fieldset_NONE %}
+
+        
+        {{ form_rest(form) }}
+
+        {% block form_buttons %}
+        <div id="edit-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_save %}
+            
+                
+                            
+            <button type="submit" name="save" class="btn btn-success"><i class="fa fa-check"></i> {% trans from "Admingenerator" %}action.generic.save{% endtrans %}
+        </button>
+    
+
+                
+                        {% endblock generic_action_save %}
+                    {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_VentaBundle_Color_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+        {% endblock form_buttons %}
+    </form>
+    {% endblock form %}

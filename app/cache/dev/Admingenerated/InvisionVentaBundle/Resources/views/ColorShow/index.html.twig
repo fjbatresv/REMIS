@@ -1,0 +1,160 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+        {% block object_actions_script %}
+        {% endblock object_actions_script %}
+{% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {% trans with {'%object%': Color.title,} from "Admin" %}You're viewing the object "%object%"{% endtrans %}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans with {'%object%': Color.title,} from "Admin" %}You're viewing the object "%object%"{% endtrans %}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="container-fluid">
+	    <div class="row object-actions-Color">
+	        <div class="col-md-12">    {% block object_actions %}
+        {% endblock object_actions %}
+</div>
+	    </div>
+
+	    <div class="row">
+	        {% block form_tabs %}
+{% endblock form_tabs %}
+
+	                {% block show %}
+    {% block object %}
+                <fieldset class="form_block form_fieldset_NONE tab-pane">
+            
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_id %}<strong>{{ 'Id'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_id %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_id">
+                        {% block show_column_id %}{{ Color.id }}{% endblock show_column_id %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_nombre %}<strong>{{ 'Nombre'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_nombre %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_nombre">
+                        {% block show_column_nombre %}{{ Color.nombre }}{% endblock show_column_nombre %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_created_by %}<strong>{{ 'Created by'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_created_by %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_created_by">
+                        {% block show_column_created_by %}{{ Color.createdBy }}{% endblock show_column_created_by %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_updated_by %}<strong>{{ 'Updated by'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_updated_by %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_updated_by">
+                        {% block show_column_updated_by %}{{ Color.updatedBy }}{% endblock show_column_updated_by %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_created_at %}<strong>{{ 'Created at'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_created_at %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_created_at">
+                        {% block show_column_created_at %}{% if Color.createdAt %}
+                    {% set datetime_format = "Y-m-d H:i:s" %}
+        
+        {{ Color.createdAt|date(datetime_format) }}
+    {% endif %}{% endblock show_column_created_at %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_updated_at %}<strong>{{ 'Updated at'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_updated_at %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_updated_at">
+                        {% block show_column_updated_at %}{% if Color.updatedAt %}
+                    {% set datetime_format = "Y-m-d H:i:s" %}
+        
+        {{ Color.updatedAt|date(datetime_format) }}
+    {% endif %}{% endblock show_column_updated_at %}
+                        </div>
+                    </div>
+                                                </div>
+                </fieldset>
+        {% endblock object %}
+
+    {% block form_buttons %}
+        <div id="show-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_VentaBundle_Color_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+                    {% block generic_action_new %}
+            
+                
+                            
+            <a class="btn btn-primary" href="{{ path("Invision_VentaBundle_Color_new", {}) }}"><i class="fa fa-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_new %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+    {% endblock form_buttons %}
+{% endblock show %}
+	        	    </div>
+    </div>
+{% endblock body %}

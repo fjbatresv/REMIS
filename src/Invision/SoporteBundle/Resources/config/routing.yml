@@ -1,0 +1,66 @@
+#Accesos
+usuario_logout:
+    path: /usuario/logout/
+usuario_login:
+    path: /usuario/login/
+    defaults: { _controller: InvisionSoporteBundle:Login:login }
+usuario_pre_logout:
+    path: /usuario/pre/logout/
+    defaults: { _controller: InvisionSoporteBundle:Login:preLogout }
+#Portada
+pagina_inicio:
+    path: /
+    defaults: { _controller: InvisionSoporteBundle:Default:portada }
+#Usuario
+cambio_clave:
+    path: /cambio_clave/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Usuario:cambioClave}
+nuevo_usuario:
+    path: /admin/usuario/nuevo/
+    defaults: { _controller: InvisionSoporteBundle:Usuario:nuevo }
+editar_usuario:
+    path: /admin/usuario/editar/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Usuario:editar }
+eliminar_usuario:
+    path: /admin/usuario/eliminar/
+    defaults: { _controller: InvisionSoporteBundle:Usuario:eliminar }
+horario_usuario:
+    path: /admin/usuario/horario/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Usuario:horario }
+#Perfil
+nuevo_perfil:
+    path: /admin/perfil/nuevo/
+    defaults: { _controller: InvisionSoporteBundle:Perfil:nuevo}
+editar_perfil:
+    path: /admin/perfil/editar/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Perfil:editar}
+eliminar_perfil:
+    path: /admin/perfil/eliminar/
+    defaults: { _controller: InvisionSoporteBundle:Perfil:eliminar }
+menu_perfil:
+    path: /admin/perfil/menu/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Perfil:menus}
+#Bitacora
+bitacora:
+    path: /admin/bitacora/
+    defaults: { _controller: InvisionSoporteBundle:Bitacora:bitacora}
+#Tipos de sede
+nuevo_tipo_sede:
+    path: /admin/tipo/sede/nuevo/
+    defaults: { _controller: InvisionSoporteBundle:TipoSede:nuevo }
+editar_tipo_sede:
+    path: /admin/tipo/sede/editar/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:TipoSede:editar }
+eliminar_tipo_sede:
+    path: /admin/tipo/sede/eliminar/
+    defaults: { _controller: InvisionSoporteBundle:TipoSede:eliminar }
+#Sedes
+nueva_sede:
+    path: /admin/sede/nueva/
+    defaults: { _controller: InvisionSoporteBundle:Sede:nueva }
+editar_sede:
+    path: /admin/sede/editar/{pk}/
+    defaults: { _controller: InvisionSoporteBundle:Sede:editar }
+eliminar_sede:
+    path: /admin/sede/eliminar/
+    defaults: { _controller: InvisionSoporteBundle:Sede:eliminar }

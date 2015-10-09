@@ -1,0 +1,31 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+        {% block object_actions_script %}
+        {% endblock object_actions_script %}
+{% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {% trans with {'%object%': ProcesoExtra.title,} from "Admin" %}You're editing the object "%object%"{% endtrans %}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans with {'%object%': ProcesoExtra.title,} from "Admin" %}You're editing the object "%object%"{% endtrans %}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="container-fluid">
+	    <div class="row object-actions-ProcesoExtra">
+	        <div class="col-md-12">    {% block object_actions %}
+        {% endblock object_actions %}
+</div>
+	    </div>
+
+	    <div class="row">{% block form_tabs %}
+{% endblock form_tabs %}
+
+	        {% include "InvisionInventarioBundle:ProcesoExtraEdit:form.html.twig" with {  } %}
+	    </div>			
+	</div>
+{% endblock body %}

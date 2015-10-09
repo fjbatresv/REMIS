@@ -1,0 +1,62 @@
+{%extends '::base.html.twig'%}
+{%block extrajs%}
+<script type="text/javascript">
+    $(function() {
+        $('#color').empty();
+    });
+</script>
+{%endblock%}
+{%block body%}
+
+<!-- left column -->
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Agregar a Stock</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="col-md-12" method="POST" action="{{path(ruta)}}" novalidate="">
+            <div class="box-body">
+                <div class="row form-group">
+                    <div class="col-md-2">
+                    {{form_label(form.codigo)}}
+                    </div>
+                    <div class="col-md-4">
+                    {{form_widget(form.codigo, {'attr' : {'class' : 'vel_cmb', 'destino' : '#color', 'ruta' : path('obtener_color') } })}}
+                        <span class="has-error">
+                            {{form_errors(form.codigo)}}
+                        </span>
+                    </div>
+                    <div class="col-md-2">
+                    {{form_label(form.color)}}
+                    </div>
+                    <div class="col-md-4">
+                    {{form_widget(form.color)}}
+                        <span class="has-error">
+                            {{form_errors(form.color)}}
+                        </span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2">
+                    {{form_label(form.cantidad)}}
+                    </div>
+                    <div class="col-md-6">
+                    {{form_widget(form.cantidad)}}
+                        <span class="has-error">
+                            {{form_errors(form.cantidad)}}
+                        </span>
+                    </div>
+                </div>
+                {{form_rest(form)}}
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Guardar</button>
+                <a  href="{{path('pagina_inicio')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

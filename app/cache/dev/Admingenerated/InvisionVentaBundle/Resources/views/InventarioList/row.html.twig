@@ -1,0 +1,51 @@
+
+{% block list_row %}
+<tr class="list_trow">{% block list_row_content %}
+                      <td class="td_VARCHAR td_codigo">
+              {% block list_td_column_codigo %}{{ Inventario.codigo }}{% endblock list_td_column_codigo %}
+          </td>
+                      <td class="td_virtual td_colorNombre">
+              {% block list_td_column_colorNombre %}{{ Inventario.color.nombre }}{% endblock list_td_column_colorNombre %}
+          </td>
+                      <td class="td_INTEGER td_cantidad">
+              {% block list_td_column_cantidad %}{{ Inventario.cantidad }}{% endblock list_td_column_cantidad %}
+          </td>
+                      <td class="td_DOUBLE td_costo">
+              {% block list_td_column_costo %}{{ Inventario.costo }}{% endblock list_td_column_costo %}
+          </td>
+                      <td class="td_DOUBLE td_venta">
+              {% block list_td_column_venta %}{{ Inventario.venta }}{% endblock list_td_column_venta %}
+          </td>
+        {% endblock list_row_content %}
+    {% block object_actions %}
+                                <td class="object_actions">
+                            <div class="btn-group">
+                                    {% block object_action_edit %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("editar_inventario", { pk: Inventario.Id }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}"
+                rel="tooltip"
+        ><i class="fa fa fa-pencil"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_edit %}
+                                    {% block object_action_delete %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("Invision_VentaBundle_Inventario_object", { pk: Inventario.Id, action: 'delete' }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.delete.label{% endtrans %}"
+                rel="tooltip"
+         data-confirm="{% trans from "Admingenerator" %}action.object.delete.confirm{% endtrans %}"  data-csrf-token="{{ path("Invision_VentaBundle_Inventario_object", { pk: Inventario.Id, action: 'delete' })|csrf_token }}" ><i class="fa fa-times"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_delete %}
+                                {% block object_actions_customActions %}{% endblock object_actions_customActions %}
+                </div>
+                        </td>
+                    {% endblock object_actions %}
+
+</tr>
+{% endblock list_row %}

@@ -1,0 +1,13 @@
+parameters:
+#    invision_soporte.example.class: Invision\SoporteBundle\Example
+
+services:
+    kernel.event_listener:
+        class: Invision\SoporteBundle\Listener\PermisoListener
+        arguments: [@service_container, @router]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

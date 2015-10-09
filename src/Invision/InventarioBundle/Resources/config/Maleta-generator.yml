@@ -1,0 +1,67 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\InventarioBundle\Model\Maleta
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: InventarioBundle
+    pk_requirement: ~
+    fields:
+        vendedor:
+            label: Vendedor
+            getter: usuario.username
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Maletas de los usuarios
+            display: [vendedor, cantidad]
+            actions:
+                new:
+                    icon: fa fa-plus
+                    route: nueva_maleta
+                    label: Nueva
+            object_actions:
+                edit:
+                    icon: fa fa-pencil
+                    route: editar_maleta
+                cargar:
+                    icon: fa fa-bars
+                    route: cargar_maleta
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for InventarioBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Maleta.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Maleta.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

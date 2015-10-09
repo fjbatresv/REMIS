@@ -1,0 +1,50 @@
+
+{% block list_row %}
+<tr class="list_trow">{% block list_row_content %}
+                      <td class="td_VARCHAR td_nombre">
+              {% block list_td_column_nombre %}{{ Usuario.username }}{% endblock list_td_column_nombre %}
+          </td>
+        {% endblock list_row_content %}
+    {% block object_actions %}
+                                <td class="object_actions">
+                            <div class="btn-group">
+                                    {% block object_action_edit %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("editar_usuario", { pk: Usuario.Id }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}"
+                rel="tooltip"
+        ><i class="fa fa fa-pencil"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_edit %}
+                                    {% block object_action_horario %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("horario_usuario", { 'pk': Usuario.Id, action: 'horario' }) }}"
+        data-original-title="{% trans from "Admin" %}Horario{% endtrans %}"
+                rel="tooltip"
+        ><i class="fa fa fa-clock-o"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_horario %}
+                                    {% block object_action_delete %}
+                            
+                                        
+    {% spaceless %}
+    <a  class="btn btn-default btn-xs " href="{{ path("Invision_SoporteBundle_Usuario_object", { pk: Usuario.Id, action: 'delete' }) }}"
+        data-original-title="{% trans from "Admingenerator" %}action.object.delete.label{% endtrans %}"
+                rel="tooltip"
+         data-confirm="{% trans from "Admingenerator" %}action.object.delete.confirm{% endtrans %}"  data-csrf-token="{{ path("Invision_SoporteBundle_Usuario_object", { pk: Usuario.Id, action: 'delete' })|csrf_token }}" ><i class="fa fa-times"></i></a>
+    {% endspaceless %}
+    
+                                                {% endblock object_action_delete %}
+                                {% block object_actions_customActions %}{% endblock object_actions_customActions %}
+                </div>
+                        </td>
+                    {% endblock object_actions %}
+
+</tr>
+{% endblock list_row %}

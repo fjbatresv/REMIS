@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="Invision\SoporteBundle\Model" defaultIdMethod="native" package="src.Invision.SoporteBundle.Model">
+    <table name="tipo_sede" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" required="true" size="50"/>
+        <column name="descripcion" type="longvarchar" required="false"/>
+    </table>
+    <table name="sede" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" required="true" size="50"/>
+        <column name="direccion" type="varchar" required="false" size="50"/>
+        <column name="telefono" type="varchar" required="false"/>
+        <column name="tipo_sede_id" type="integer" required="true"/>
+        <foreign-key foreignTable="tipo_sede">
+            <reference local="tipo_sede_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="usuario" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" size="45"/>
+        <column name="email" type="varchar" size="100"/>
+        <column name="salt" type="varchar" size="255"/>
+        <column name="apellido" type="varchar" size="45"/>
+        <column name="dpi" type="varchar" required="false"/>
+        <column name="perfil_id" type="integer" required="true"/>
+        <column name="username" type="varchar" size="45" required="true"/>
+        <column name="password" type="varchar" size="45" required="true"/>
+        <column name="direccion" type="varchar" size="100"/>
+        <column name="fecha_nacimiento" type="date"/>
+        <column name="ultimo_cambio_password" type="date"/>
+        <column name="sede_id" type="integer" required="true"/>
+        <column name="created_by" type="varchar" size="50"/>
+        <column name="updated_by" type="varchar" size="50"/>
+        <column name="created_at" type="timestamp"/>
+        <column name="updated_at" type="timestamp"/>
+        <behavior name="timestampable"/>
+        <foreign-key foreignTable="perfil">
+            <reference local="perfil_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="sede">
+            <reference local="sede_id" foreign="id"/>
+        </foreign-key>
+    </table>
+     <table name="bitacora" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="descripcion" type="longvarchar" required="true"/>
+        <column name="direccion" type="varchar" size="15" required="true"/>   
+        <column name="fecha_hora" type="timestamp" required="true"/>
+        <column name="usuario" type="varchar" required="false"/>   
+        <column name="tabla" type="varchar" size="100" required="false"/>
+        <column name="dato_tabla" type="integer" required="false"/>
+        <column name="error" type="varchar" size="255" required="false"/>
+        <column name="dato_error" type="varchar" size="255" required="false"/>
+        <column name="estado" type="integer" required="true"/>
+        <column name="sede_id" type="integer" required="true"/>
+        <column name="created_by" type="varchar" size="50"/>
+        <column name="updated_by" type="varchar" size="50"/>
+        <column name="created_at" type="timestamp"/>
+        <column name="updated_at" type="timestamp"/>
+        <behavior name="timestampable"/>
+        <foreign-key foreignTable="sede">
+            <reference local="sede_id" foreign="id"/>
+        </foreign-key>
+    </table>
+
+    <table name="dia" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" size="45" required="true"/>
+    </table>
+    <table name="horario" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="dia_id" type="integer" required="true"/>
+        <column name="hora_inicio" type="time" required="true"/>
+        <column name="hora_fin" type="time" required="true"/>
+        <foreign-key foreignTable="dia">
+            <reference local="dia_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="usuario_horario" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="usuario_id" type="integer" required="true"/>
+        <column name="horario_id" type="integer" required="true"/>
+        <column name="created_by" type="varchar" size="50"/>
+        <column name="updated_by" type="varchar" size="50"/>
+        <column name="created_at" type="timestamp"/>
+        <column name="updated_at" type="timestamp"/>
+        <behavior name="timestampable"/>
+        <foreign-key foreignTable="usuario" onDelete="cascade" onUpdate="cascade">
+            <reference local="usuario_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="horario">
+            <reference local="horario_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="perfil" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" size="45" required="true"/>
+        <column name="descripcion" type="varchar" size="100" required="true"/>
+        <column name="created_by" type="varchar" size="50"/>
+        <column name="updated_by" type="varchar" size="50"/>
+        <column name="created_at" type="timestamp"/>
+        <column name="updated_at" type="timestamp"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="menu" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="nombre" type="varchar" size="45" required="true"/>
+        <column name="ruta" type="varchar" size="45" required="true"/>
+        <column name="icono" type="varchar" size="45" required="true"/>
+        <column name="superior" type="integer" size="45" required="true"/>
+        <column name="visible" type="integer" size="45" required="true"/>
+    </table>
+    <table name="perfil_menu" package="src.Invision.SoporteBundle.Model">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="perfil_id" type="integer" required="true"/>
+        <column name="menu_id" type="integer" required="true"/>
+        <column name="created_by" type="varchar" size="50"/>
+        <column name="updated_by" type="varchar" size="50"/>
+        <column name="created_at" type="timestamp"/>
+        <column name="updated_at" type="timestamp"/>
+        <behavior name="timestampable"/>
+        <foreign-key foreignTable="perfil" onDelete="cascade" onUpdate="cascade">
+            <reference local="perfil_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="menu">
+            <reference local="menu_id" foreign="id"/>
+        </foreign-key>
+    </table>
+</database>

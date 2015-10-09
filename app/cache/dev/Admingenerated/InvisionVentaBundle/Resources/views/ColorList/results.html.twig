@@ -1,0 +1,131 @@
+
+<div class="results-list">{% block list_nbresults %}
+<div class="list_nbresults">
+    {% set count = Colors.nbResults %}
+    {% set start = ( Colors.currentPage - 1 ) * Colors.maxPerPage + 1 %}
+    {% set end = start + Colors.maxPerPage - 1 %}
+    {% set end = end > count ? count : end %}
+
+    {% if Colors.haveToPaginate %}
+    {% trans with {'%start%': start,'%end%': end,'%count%': count,} from "Admingenerator" %}list.display.range{% endtrans %}
+    {% elseif  count > 0  %}
+    {% trans with {'%count%': count,} from "Admingenerator" %}list.display.all{% endtrans %}
+    {% endif %}
+</div>
+{% endblock list_nbresults %}
+{% block form_batch_actions %}
+{% endblock form_batch_actions %}
+
+
+        <table id="table-list-Color" class="table table-striped table-hover table-condensed object-actions-Color">
+            {% block list_thead %}
+<thead>
+    <tr class="list_thead">
+            
+        <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'Nombre' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'Nombre' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+            <span class="sort-addon">
+            {% if sortColumn == 'Nombre' and sortOrder == 'ASC' %}
+                    <a href="?sort=Nombre&order_by=desc">
+                {% else %}
+                    <a href="?sort=Nombre&order_by=asc">
+                {% endif %}{{ 'Nombre'|trans({}, 'Admin') }}</a>
+                {% if sortColumn == 'Nombre' %}
+                    {% if sortColumn == 'Nombre' and sortOrder == 'ASC' %}
+                                                    <i class="fa fa-sort-alpha-asc active"></i>
+                            <i class="fa fa-sort-alpha-desc hover"></i>
+                                            {% else %}
+                                                    <i class="fa fa-sort-alpha-asc hover"></i>
+                            <i class="fa fa-sort-alpha-desc active"></i>
+                                            {% endif %}
+                {% else %}
+                                            <i class="fa fa-sort-alpha-asc placeholder hover"></i>
+                                    {% endif %}
+            </span>
+        </th>
+
+            <th class="actions">{% trans from "Admingenerator" %}list.header.actions{% endtrans %}</th>
+    </tr>
+</thead>
+{% endblock list_thead %}
+{% block list_tbody %}
+    <tbody>
+        {% if Colors|length > 0 %}
+
+        {% for Color in Colors %}
+            {% include "InvisionVentaBundle:ColorList:row.html.twig" with {  } %}
+        {% endfor %}    {% block object_actions_script %}
+        <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/object-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined){
+        	$(".object-actions-Color").agen$objectActions({
+            	actionsSelector: '.object_actions a'
+            });
+        })(this, jQuery);
+    </script>
+        {% endblock object_actions_script %}
+{% else %}
+        <tr class="list_trow no_results_row">
+                    <td colspan="2">{% trans from "Admingenerator" %}list.no.results{% endtrans %}</td>
+                </tr>
+        {% endif %}
+    </tbody>
+{% endblock list_tbody %}
+
+        </table>
+
+        <div class="form-group list-actions col-md-12">
+                    <div id="generic_actions" class="pull-left btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_Nuevo %}
+            
+                
+                            
+            <a class="btn btn btn-primary" href="{{ path("nuevo_color", {}) }}"><i class="fa fa fa-plus"></i> {% trans from "Admin" %}Nuevo{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_Nuevo %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+</div>
+        <div class="pull-right btn-toolbar" role="toolbar">{% block list_paginator_perpage %}
+    {% if Colors.haveToPaginate or Colors.maxPerPage is not sameas(10) %}
+    <div class="btn-group input-group">
+        <div class="btn btn-sm btn-default btn-reset">{% trans from "Admingenerator" %}pagerfanta.view.perpage{% endtrans %}</div>
+        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+            {{ "pagerfanta.num.elements"|trans({"%number%": Colors.maxPerPage}, "Admingenerator") }} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu">
+            {% for perPage in [10, 25, 50, 75, 100] %}
+            <li>
+                <a href="{{ path("Invision_VentaBundle_Color_list", {perPage: perPage}) }}">
+                    {{ "pagerfanta.num.elements"|trans({"%number%": perPage}, "Admingenerator") }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+{% endblock list_paginator_perpage %}
+</div>
+
+            <div class="pull-right btn-toolbar" role="toolbar">    {% block list_paginator_pages %}
+        {{ pagerfanta(Colors, 'admingenerator') }}
+    {% endblock list_paginator_pages %}
+</div>
+        </div>{% block endform_batch_actions %}
+{% endblock endform_batch_actions %}
+
+</div>

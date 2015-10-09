@@ -1,0 +1,208 @@
+
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock stylesheets %}
+
+{% block javascripts %}    {{ parent() }}
+        {% block object_actions_script %}
+        {% endblock object_actions_script %}
+{% endblock javascripts %}    {% block title %}
+        {{ parent() }} - {% trans with {'%object%': Inventario.title,} from "Admin" %}You're viewing the object "%object%"{% endtrans %}
+    {% endblock title %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans with {'%object%': Inventario.title,} from "Admin" %}You're viewing the object "%object%"{% endtrans %}</h1>
+        </header>
+    {% endblock page_title %}
+<div class="container-fluid">
+	    <div class="row object-actions-Inventario">
+	        <div class="col-md-12">    {% block object_actions %}
+        {% endblock object_actions %}
+</div>
+	    </div>
+
+	    <div class="row">
+	        {% block form_tabs %}
+{% endblock form_tabs %}
+
+	                {% block show %}
+    {% block object %}
+                <fieldset class="form_block form_fieldset_NONE tab-pane">
+            
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_id %}<strong>{{ 'Id'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_id %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_id">
+                        {% block show_column_id %}{{ Inventario.id }}{% endblock show_column_id %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_codigo %}<strong>{{ 'Codigo'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_codigo %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_codigo">
+                        {% block show_column_codigo %}{{ Inventario.codigo }}{% endblock show_column_codigo %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_color_id %}<strong>{{ 'Color id'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_color_id %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_color_id">
+                        {% block show_column_color_id %}{{ Inventario.colorId }}{% endblock show_column_color_id %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_cantidad %}<strong>{{ 'Cantidad'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_cantidad %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_cantidad">
+                        {% block show_column_cantidad %}{{ Inventario.cantidad }}{% endblock show_column_cantidad %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_descripcion %}<strong>{{ 'Descripcion'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_descripcion %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_descripcion">
+                        {% block show_column_descripcion %}{{ Inventario.descripcion }}{% endblock show_column_descripcion %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_imagen %}<strong>{{ 'Imagen'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_imagen %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_imagen">
+                        {% block show_column_imagen %}{{ Inventario.imagen }}{% endblock show_column_imagen %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_created_by %}<strong>{{ 'Created by'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_created_by %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_created_by">
+                        {% block show_column_created_by %}{{ Inventario.createdBy }}{% endblock show_column_created_by %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_updated_by %}<strong>{{ 'Updated by'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_updated_by %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_updated_by">
+                        {% block show_column_updated_by %}{{ Inventario.updatedBy }}{% endblock show_column_updated_by %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_created_at %}<strong>{{ 'Created at'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_created_at %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_created_at">
+                        {% block show_column_created_at %}{% if Inventario.createdAt %}
+                    {% set datetime_format = "Y-m-d H:i:s" %}
+        
+        {{ Inventario.createdAt|date(datetime_format) }}
+    {% endif %}{% endblock show_column_created_at %}
+                        </div>
+                    </div>
+                                                </div>
+                        <div class="row">
+                                                        
+                    <div class="col-md-2 text-right">
+                    {% block show_column_label_updated_at %}<strong>{{ 'Updated at'|trans({}, 'Admin') }}</strong>{% endblock show_column_label_updated_at %}
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="form-group form_field field_updated_at">
+                        {% block show_column_updated_at %}{% if Inventario.updatedAt %}
+                    {% set datetime_format = "Y-m-d H:i:s" %}
+        
+        {{ Inventario.updatedAt|date(datetime_format) }}
+    {% endif %}{% endblock show_column_updated_at %}
+                        </div>
+                    </div>
+                                                </div>
+                </fieldset>
+        {% endblock object %}
+
+    {% block form_buttons %}
+        <div id="show-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_VentaBundle_Inventario_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+                    {% block generic_action_new %}
+            
+                
+                            
+            <a class="btn btn-primary" href="{{ path("Invision_VentaBundle_Inventario_new", {}) }}"><i class="fa fa-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_new %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+    {% endblock form_buttons %}
+{% endblock show %}
+	        	    </div>
+    </div>
+{% endblock body %}

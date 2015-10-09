@@ -1,0 +1,182 @@
+
+    {% block form %}
+    <form class="admin_form"
+        {% if Usuario.Id %}
+            action="{{ path("Invision_SoporteBundle_Usuario_update", { 'pk': Usuario.Id }) }}"
+        {% else %}
+            action="{{ path("Invision_SoporteBundle_Usuario_create") }}"
+        {% endif %}
+        method="post" {{ form_enctype(form) }} role="form">
+
+        {{ form_errors(form) }}
+                {% block form_fieldset_NONE %}
+    <fieldset class="container-fluid form_block form_fieldset_NONE tab-pane">
+        			
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_id">
+                    {% block form_id %}
+                        {{ form_row(form['id']) }}
+                    {% endblock form_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_nombre">
+                    {% block form_nombre %}
+                        {{ form_row(form['nombre']) }}
+                    {% endblock form_nombre %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_email">
+                    {% block form_email %}
+                        {{ form_row(form['email']) }}
+                    {% endblock form_email %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_salt">
+                    {% block form_salt %}
+                        {{ form_row(form['salt']) }}
+                    {% endblock form_salt %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_apellido">
+                    {% block form_apellido %}
+                        {{ form_row(form['apellido']) }}
+                    {% endblock form_apellido %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_dpi">
+                    {% block form_dpi %}
+                        {{ form_row(form['dpi']) }}
+                    {% endblock form_dpi %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_perfil_id">
+                    {% block form_perfil_id %}
+                        {{ form_row(form['perfil_id']) }}
+                    {% endblock form_perfil_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_username">
+                    {% block form_username %}
+                        {{ form_row(form['username']) }}
+                    {% endblock form_username %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_password">
+                    {% block form_password %}
+                        {{ form_row(form['password']) }}
+                    {% endblock form_password %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_direccion">
+                    {% block form_direccion %}
+                        {{ form_row(form['direccion']) }}
+                    {% endblock form_direccion %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_date field_fecha_nacimiento">
+                    {% block form_fecha_nacimiento %}
+                        {{ form_row(form['fecha_nacimiento']) }}
+                    {% endblock form_fecha_nacimiento %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_date field_ultimo_cambio_password">
+                    {% block form_ultimo_cambio_password %}
+                        {{ form_row(form['ultimo_cambio_password']) }}
+                    {% endblock form_ultimo_cambio_password %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_integer field_sede_id">
+                    {% block form_sede_id %}
+                        {{ form_row(form['sede_id']) }}
+                    {% endblock form_sede_id %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_created_by">
+                    {% block form_created_by %}
+                        {{ form_row(form['created_by']) }}
+                    {% endblock form_created_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_text field_updated_by">
+                    {% block form_updated_by %}
+                        {{ form_row(form['updated_by']) }}
+                    {% endblock form_updated_by %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_created_at">
+                    {% block form_created_at %}
+                        {{ form_row(form['created_at']) }}
+                    {% endblock form_created_at %}
+                </div>
+                                        </div>
+                    <div class="row">
+                                            <div class="col-md-4 form_field field_datetime field_updated_at">
+                    {% block form_updated_at %}
+                        {{ form_row(form['updated_at']) }}
+                    {% endblock form_updated_at %}
+                </div>
+                                        </div>
+            </fieldset>
+{% endblock form_fieldset_NONE %}
+
+        
+        {{ form_rest(form) }}
+
+        {% block form_buttons %}
+        <div id="edit-actions" class="form-group">
+            <div class="btn-toolbar" role="toolbar">
+                {% block generic_actions %}
+                        {% block generic_action_save %}
+            
+                
+                            
+            <button type="submit" name="save" class="btn btn-success"><i class="fa fa-check"></i> {% trans from "Admingenerator" %}action.generic.save{% endtrans %}
+        </button>
+    
+
+                
+                        {% endblock generic_action_save %}
+                    {% block generic_action_list %}
+            
+                
+                            
+            <a class="btn btn-default" href="{{ path("Invision_SoporteBundle_Usuario_list", {}) }}"><i class="fa fa-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}
+        </a>
+    
+
+                
+                        {% endblock generic_action_list %}
+        
+        {% block generic_actions_script %}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/generic-actions.js") }}"></script>
+    <script type="text/javascript">
+        ;(function(window, $, undefined) {
+            $("#generic_actions").agen$genericActions({
+                actionsSelector: 'a.btn'
+            });
+        })(this, jQuery);
+    </script>
+{% endblock generic_actions_script %}
+
+    {% endblock generic_actions %}
+
+            </div>
+        </div>
+        {% endblock form_buttons %}
+    </form>
+    {% endblock form %}

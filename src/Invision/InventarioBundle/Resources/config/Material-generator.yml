@@ -1,0 +1,64 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\InventarioBundle\Model\Material
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: InventarioBundle
+    pk_requirement: ~
+    fields: ~
+    object_actions:
+        delete:
+            icon: fa fa-eraser
+            route: eliminar_material
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Materiales
+            display: [nombre]
+            actions:
+                new:
+                    icon: fa fa-plus
+                    label: Nuevo
+                    class: btn-primary
+                    route: nuevo_material
+            object_actions:
+                edit:
+                    icon: fa fa-pencil
+                    route: editar_material
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for InventarioBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Material.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Material.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

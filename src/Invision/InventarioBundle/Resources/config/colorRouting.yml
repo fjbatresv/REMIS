@@ -1,0 +1,9 @@
+nuevo_color:
+    path: /admin/color/nuevo
+    defaults: { _controller: InvisionInventarioBundle:Color:nuevo }
+editar_color:
+    path: /admin/color/editar
+    defaults: { _controller: InvisionInventarioBundle:Color:editar}
+eliminar_color:
+    path: /admin/color/eliminar
+    defaults: { _controller: InvisionInventarioBundle:Color:eliminar}

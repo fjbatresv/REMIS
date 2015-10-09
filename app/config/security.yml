@@ -1,0 +1,36 @@
+security:
+    firewalls:
+        frontend:
+            pattern: ^/*
+            anonymous: ~
+            form_login:
+                login_path: usuario_login
+            logout:
+                path: usuario_logout
+                target: usuario_login
+            security: true
+            remember_me:
+                key:  velfasa2013
+                lifetime: 3600
+                path:  usuario_logout
+    access_control:
+        - { path: ^/v1/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cambio_password/* , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/recuperacion/* , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro/* , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_wdt/* , roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/_profiler/* , roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/* , roles: ROLE_USUARIO }
+        
+    providers:
+        main:
+            propel:
+                class: Invision\SoporteBundle\Model\Usuario
+                property: username
+                
+    encoders:
+        InvisionSoporteBundle\Model\Usuario:
+          algorithm: plaintext
+          
+          

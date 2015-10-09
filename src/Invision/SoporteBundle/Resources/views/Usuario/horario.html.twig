@@ -1,0 +1,35 @@
+{%extends '::base.html.twig'%}
+{%block body%}
+<!-- left column -->
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Editar horario</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form method="POST" action="{{path(ruta, {'pk' : pk})}}" novalidate="">
+            <div class="box-body">
+                <table cellpadding="10">
+                    {%for dia in dias%}
+                    <tr>
+                        <td>{{form_widget(form.dia[dia.id])}}</td>
+                        <td>{{dia.nombre}}</td>
+                        <td>Desde</td>
+                        <td class=" bootstrap-timepicker">{{form_widget(form[dia.nombre ~  'Desde'])}}</td>
+                        <td>Hasta</td>
+                        <td class=" bootstrap-timepicker">{{form_widget(form[dia.nombre ~ 'Hasta'])}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a  href="{{path('Invision_SoporteBundle_Usuario_list')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Regresar</a>
+            </div>
+            {{form_rest(form)}}
+        </form>
+    </div>
+</div>
+
+{%endblock%}

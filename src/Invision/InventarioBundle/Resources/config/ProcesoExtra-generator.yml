@@ -1,0 +1,64 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\InventarioBundle\Model\ProcesoExtra
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: InventarioBundle
+    pk_requirement: ~
+    fields: ~
+    object_actions:
+        delete:
+            icon: fa fa-eraser
+            route: eliminar_proceso_extra
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Procesos extra
+            display: [nombre]
+            actions:
+                new:
+                    icon: fa fa-plus
+                    class: btn-primary
+                    route: nuevo_proceso_extra
+                    label: Nuevo
+            object_actions:
+                edit:
+                    icon: fa fa-pencil
+                    route: editar_proceso_extra
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for InventarioBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: ProcesoExtra.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: ProcesoExtra.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

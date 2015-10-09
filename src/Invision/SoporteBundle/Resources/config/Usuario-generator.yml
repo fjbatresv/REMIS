@@ -1,0 +1,69 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\SoporteBundle\Model\Usuario
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: SoporteBundle
+    pk_requirement: ~
+    fields:
+        nombre:
+            label: Usuario
+            getter: username
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Lista de usuarios
+            display: [nombre]
+            actions:
+                nuevo:
+                    route:  nuevo_usuario
+                    class: btn-primary
+                    icon: fa fa-plus
+                
+                    
+            object_actions:
+                edit: 
+                    route: editar_usuario
+                    icon: fa fa-pencil
+                horario:
+                    route: horario_usuario
+                    icon: fa fa-clock-o
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for SoporteBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Usuario.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Usuario.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

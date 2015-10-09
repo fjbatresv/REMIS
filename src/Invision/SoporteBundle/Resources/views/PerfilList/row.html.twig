@@ -1,0 +1,6 @@
+{% extends_admingenerated "InvisionSoporteBundle:PerfilList:row.html.twig" %}
+ {% block object_action_delete %}
+    {% spaceless %}
+<a  class="btn btn-default btn-xs " href="javascript:;" onClick="vel_admin.eliminar('el perfil ', '{{Perfil.nombre}}', '{{path('eliminar_perfil')}}', '?pk={{Perfil.id}}')"><i class="fa fa-eraser"></i></a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

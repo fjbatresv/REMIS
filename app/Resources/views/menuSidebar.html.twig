@@ -1,0 +1,27 @@
+{%for menu in menus%}
+{%if menu.superior == 0%}
+<li class="treeview">
+    {%if menu.ruta == '#'%}
+     <a href="#">
+        <i class="{{menu.icono}}"></i>
+        <span>{{menu.nombre}}</span>
+        <i class="fa fa-angle-left pull-right"></i>
+    </a>
+    <ul class="treeview-menu">
+        {%for menuInferior in menus%}
+        {%if menuInferior.superior == menu.id%}
+        <li><a href="{{path(menuInferior.ruta)}}"><i class="{{menuInferior.icono}}"></i>{{menuInferior.nombre}}</a></li>
+        {%endif%}
+        {%endfor%}
+
+    </ul>
+    {%else%}
+     <a href="{{path(menu.ruta)}}">
+        <i class="{{menu.icono}}"></i>
+        <span>{{menu.nombre}}</span>
+        <i class="fa fa-angle-left pull-right"></i>
+    </a>
+    {%endif%}
+</li>
+{%endif%}
+{%endfor%}

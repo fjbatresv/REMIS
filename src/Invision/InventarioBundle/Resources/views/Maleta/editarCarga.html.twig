@@ -1,0 +1,15 @@
+<h3>Articulo "{{ detalle.inventario.codigo }}" color "{{ detalle.inventario.color.nombre }}"</h3>
+<form fullname="{{ form.vars.name }}" class="form-horizontal" id="form" method="POST" {{ form_enctype(form) }} novalidate >
+    <div class="row form-group">
+        <div class="col-md-2">
+            {{form_label(form.cantidad)}}
+        </div>
+        <div class="col-md-6">
+            {{form_widget(form.cantidad)}}
+            <span class="has-error">
+                {{form_errors(form.cantidad)}}
+            </span>
+        </div>
+    </div>
+    {{form_rest(form)}}
+</form>

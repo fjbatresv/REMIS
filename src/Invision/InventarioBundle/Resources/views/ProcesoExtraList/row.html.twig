@@ -1,0 +1,9 @@
+{% extends_admingenerated "InvisionInventarioBundle:ProcesoExtraList:row.html.twig" %}
+{% block object_action_delete %}
+{% spaceless %}
+<a  class="btn btn-default btn-xs " 
+    onClick="vel_admin.eliminar('el proceso ', '{{ProcesoExtra.nombre}}', '{{path('eliminar_proceso_extra')}}', '?pk={{ProcesoExtra.id}}')">
+    <i class="fa fa-times"></i>
+</a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

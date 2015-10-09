@@ -1,0 +1,20 @@
+{
+    "name": "laurentbrieu/tcpdf",
+    "type": "library",
+    "description": "Composer wrapper for TCPDF PHP library",
+    "keywords": ["tcpdf", "pdf"],
+    "homepage": "https://github.com/LaurentBrieu/TCPDF",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laurent Brieu",
+            "email": "contact@laurentbrieu.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "TCPDF": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}

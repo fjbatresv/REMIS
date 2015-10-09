@@ -1,0 +1,66 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\SoporteBundle\Model\Perfil
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: SoporteBundle
+    pk_requirement: ~
+    fields: ~
+    object_actions:
+        delete:
+            icon: fa fa-eraser
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Lista de perfiles
+            display: [nombre,descripcion]
+            actions:
+                nuevo: 
+                    icon: fa fa-plus
+                    class: btn-primary
+                    route: nuevo_perfil
+                
+            object_actions:
+                edit:  
+                    route: editar_perfil
+                    icon: fa fa-pencil
+                menu:
+                    route: menu_perfil
+                    icon: fa fa-bars
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for SoporteBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Perfil.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Perfil.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

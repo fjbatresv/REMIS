@@ -1,0 +1,9 @@
+{% extends_admingenerated "InvisionInventarioBundle:MaletaList:row.html.twig" %}
+{% block object_action_delete %}
+{% spaceless %}
+<a  class="btn btn-default btn-xs " 
+    onClick="vel_admin.eliminar('la maleta del usuario ', '{{Maleta.usuario.username}}', '{{path('eliminar_maleta')}}', '?pk={{Maleta.id}}')">
+    <i class="fa fa-times"></i>
+</a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

@@ -1,0 +1,9 @@
+{% extends_admingenerated "InvisionInventarioBundle:MaterialList:row.html.twig" %}
+{% block object_action_delete %}
+{% spaceless %}
+<a  class="btn btn-default btn-xs " 
+    onClick="vel_admin.eliminar('el material ', '{{Material.nombre}}', '{{path('eliminar_material')}}', '?pk={{Material.id}}')">
+    <i class="fa fa-eraser"></i>
+</a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

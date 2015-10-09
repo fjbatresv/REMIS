@@ -1,0 +1,9 @@
+nuevo_material:
+    path: /admin/material/nuevo/
+    defaults: { _controller: InvisionInventarioBundle:Material:nuevo }
+editar_material:
+    path: /admin/material/editar/{pk}/
+    defaults: { _controller: InvisionInventarioBundle:Material:editar }
+eliminar_material:
+    path: /admin/material/eliminar/
+    defaults: { _controller: InvisionInventarioBundle:Material:eliminar }

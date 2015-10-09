@@ -1,0 +1,6 @@
+{% extends_admingenerated "InvisionSoporteBundle:TipoSedeList:row.html.twig" %}
+ {% block object_action_delete %}
+    {% spaceless %}
+<a  class="btn btn-default btn-xs " href="javascript:;" onClick="vel_admin.eliminar('el tipo de sede ', '{{TipoSede.nombre}}', '{{path('eliminar_tipo_sede')}}', '?pk={{TipoSede.id}}')"><i class="fa fa-eraser"></i></a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

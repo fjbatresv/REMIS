@@ -1,0 +1,9 @@
+{% extends_admingenerated "InvisionInventarioBundle:InventarioList:row.html.twig" %}
+{% block object_action_delete %}
+{% spaceless %}
+<a  class="btn btn-default btn-xs " 
+    onClick="vel_admin.eliminar('el articulo ', '{{Inventario.codigo}}', '{{path('eliminar_inventario')}}', '?pk={{Inventario.id}}')">
+    <i class="fa fa-times"></i>
+</a>
+    {% endspaceless %}
+{% endblock object_action_delete %}

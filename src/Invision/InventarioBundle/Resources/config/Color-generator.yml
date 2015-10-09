@@ -1,0 +1,61 @@
+generator: admingenerator.generator.propel
+params:
+    model: Invision\InventarioBundle\Model\Color
+    namespace_prefix: Invision
+    concurrency_lock: ~
+    bundle_name: InventarioBundle
+    pk_requirement: ~
+    fields: ~
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Lista de colores
+            display: [nombre]
+            actions:
+                Nuevo:
+                    icon : fa fa-plus
+                    class: btn btn-primary
+                    route: nuevo_color
+            object_actions:
+                edit:
+                    icon: fa fa-pencil
+                    route: editar_color
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: New object for InventarioBundle
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Color.title }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Color.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

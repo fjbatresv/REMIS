@@ -1,0 +1,1 @@
+{% extends_admingenerated "InvisionInventarioBundle:MaterialList:filters.html.twig" %}

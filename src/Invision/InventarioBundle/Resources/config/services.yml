@@ -1,0 +1,7 @@
+parameters:
+#    invision_venta.example.class: Invision\InventarioBundle\Example
+
+services:
+#    invision_venta.example:
+#        class: %invision_venta.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
